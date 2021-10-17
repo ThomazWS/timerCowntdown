@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+    <style>
+        p {
+            text-align: center;
+            font-size: 60px;
+            margin-top: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    Faltam <span id='HMSremaining'></span> para o carrinho expirar.
+
+    <script>
+        function calculateHMSleft() {
+            //Calcular
+            var now = new Date(); //recebe data atual
+            var hoursleft = 23 - now.getHours();
+            var minutesleft = 59 - now.getMinutes();
+            var secondsleft = 59 - now.getSeconds();
+
+            //formata adicionando zeros quando menor que 10 
+            if (minutesleft < 10) minutesleft = "0" + minutesleft;
+            if (secondsleft < 10) secondsleft = "0" + secondsleft;
+
+            //mostra na tela
+            $('#HMSremaining').html(hoursleft + ":" + minutesleft + ":" + secondsleft);
+        }
+
+        calculateHMSleft();
+        setInterval(calculateHMSleft, 1000);
+    </script>
+
+</body>
+
+</html>
+
+
+<!-- 
+Pegar data e hora do servidor 
+
+<?php
+date_default_timezone_set('America/Sao_Paulo');
+$date = date('Y-m-d H:i');
+echo $date;
+?>
+
+if ($date == )
+
+ -->
